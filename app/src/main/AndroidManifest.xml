@@ -1,0 +1,76 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 권한 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MeltingBooks"
+        tools:targetApi="31"
+
+        android:usesCleartextTraffic="true"
+        >
+
+        <!-- 시작점 (스플래시 → 로그인 → 메인) -->
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- LoginActivity에 커스텀 URL 스킴 추가 -->
+        <!--<activity android:name=".LoginActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="meltingbooks" android:host="callback" />
+            </intent-filter>
+        </activity>-->
+
+        <activity android:name=".LoginActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="localhost" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".SplashActivity" android:exported="true"/>
+
+        <!-- 기존의 MainActivity 설정 -->
+        <activity android:name=".FeedActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+        <activity android:name=".UploadAudio" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+        <activity android:name=".BrowseActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+
+        <!-- 캘린더 액티비티 -->
+        <activity android:name=".CalendarActivity" android:windowSoftInputMode="adjustPan"/>
+
+        <!-- 프로필 액티비티 -->
+        <activity android:name=".ProfileActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".SettingProfile" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+        <activity android:name=".SettingApp" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+
+        <!-- 그룹 관련 액티비티 -->
+        <activity android:name=".GroupActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+        <activity android:name=".GroupWriteActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+        <activity android:name=".GroupJoinActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+        <activity android:name=".GroupNewCreateActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+        <activity android:name=".GroupProfileActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+        <activity android:name=".GroupCommentActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+
+        <activity android:name=".SearchActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
+
+    </application>
+</manifest>
