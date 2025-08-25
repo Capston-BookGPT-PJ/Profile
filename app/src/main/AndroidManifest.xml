@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeltingBooks"
         tools:targetApi="31"
-
         android:usesCleartextTraffic="true"
         >
 
@@ -37,12 +36,37 @@
             </intent-filter>
         </activity>-->
 
+        <!--<activity android:name=".LoginActivity" android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="http" android:host="localhost" />
+        </intent-filter>
+        </activity>-->
+
         <activity android:name=".LoginActivity" android:exported="true">
+            <intent-filter android:label="login">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="meltingbooks"
+                    android:host="callback" />
+            </intent-filter>
+        </activity>
+
+
+
+        <!-- 구글 로그인 콜백 Activity -->
+        <activity android:name=".GoogleLoginCallbackActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="localhost" />
+
+                <!-- 백엔드에 등록한 redirect_uri 스킴 -->
+                <data android:scheme="meltingbooks" android:host="callback" />
             </intent-filter>
         </activity>
 
@@ -69,7 +93,6 @@
         <activity android:name=".GroupNewCreateActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
         <activity android:name=".GroupProfileActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
         <activity android:name=".GroupCommentActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
-
         <activity android:name=".SearchActivity" android:windowSoftInputMode="adjustResize" android:exported="true"/>
 
     </application>
